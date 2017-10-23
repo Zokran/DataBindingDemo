@@ -31,7 +31,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_recycler_view);
         binding.recyclerView.setHasFixedSize(true);
         userList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             User user = new User("firstName" + i, "lastName" + i, i);
             userList.add(user);
         }

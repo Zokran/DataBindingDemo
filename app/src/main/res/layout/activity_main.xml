@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:bind="http://schemas.android.com/tools">
 
     <!--自定义绑定文件名-->
     <data class="ActMainBind">
@@ -65,7 +64,8 @@
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{user.firstName+user.lastName,default=dumingwei}"/>
+                android:text="@{user.firstName+user.lastName,default=dumingwei}"
+                android:textAllCaps="false"/>
 
             <TextView
                 android:id="@+id/textUserList"
@@ -81,7 +81,7 @@
 
             <include
                 layout="@layout/include_layout"
-                app:user="@{user}"/>
+                bind:user="@{user}"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -118,43 +118,50 @@
                 android:layout_height="wrap_content"
                 android:onClick="@{()->handler.onClickFriend(content)}"
                 android:text="click"
+                android:textAllCaps="false"
                 android:visibility="@{textUtil.getVisibility()==View.GONE?View.GONE:View.VISIBLE}"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeContact"
-                android:text="change contact"/>
+                android:text="change contact"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeContactField"
-                android:text="changeContactField"/>
+                android:text="changeContactField"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeStringMap"
-                android:text="changeStringMap"/>
+                android:text="changeStringMap"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="viewStubBinding"
-                android:text="ViewStubBinding"/>
+                android:text="ViewStubBinding"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="recyclerViewBind"
-                android:text="RecyclerViewBind"/>
+                android:text="RecyclerViewBind"
+                android:textAllCaps="false"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="attributeSetter"
-                android:text="AttributeSetterActivity"/>
+                android:text="AttributeSetterActivity"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 

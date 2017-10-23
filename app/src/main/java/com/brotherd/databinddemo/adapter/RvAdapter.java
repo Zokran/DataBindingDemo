@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by dumingwei on 2017/5/19.
  */
-public class RvAdapter extends RecyclerView.Adapter<RvAdapter.BindingHolder> {
+public class RvAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<User> userList;
     private Context context;
@@ -29,16 +29,17 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.BindingHolder> {
     }
 
     @Override
-    public BindingHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         ItemRvBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_rv, parent, false);
-        BindingHolder holder = new BindingHolder(binding.getRoot());
-        holder.setBinding(binding);
+        BindingViewHolder<ItemRvBinding> viewHolder = new BindingViewHolder<>(binding);
+        //BindingHolder holder = new BindingHolder(binding.getRoot());
+        //holder.setBinding(binding);
         binding.setClickHandler(new EventHandler(context));
-        return holder;
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(BindingHolder holder, int position) {
+    public void onBindViewHolder(BindingViewHolder holder, int position) {
         holder.getBinding().setVariable(BR.item, userList.get(position));
         holder.getBinding().executePendingBindings();
     }

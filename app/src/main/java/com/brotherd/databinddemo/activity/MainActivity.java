@@ -1,12 +1,15 @@
 package com.brotherd.databinddemo.activity;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
 import android.databinding.ObservableArrayMap;
 import android.databinding.ObservableMap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
+import com.brotherd.databinddemo.BR;
 import com.brotherd.databinddemo.ObservableContact;
 import com.brotherd.databinddemo.ObservableFieldContact;
 import com.brotherd.databinddemo.R;
@@ -37,10 +40,23 @@ public class MainActivity extends AppCompatActivity {
         userList.add(new User("user1", "user1", 1));
         userList.add(new User("user2", "user2", 2));
         binding.setUser(user);
+        //binding.setVariable(BR.user,user);
         binding.setContent("hello content");
         binding.setHandler(handler);
         binding.setUserList(userList);
         observableContact = new ObservableContact("police", "110");
+        observableContact.addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                if (propertyId == BR.name) {
+                    Toast.makeText(MainActivity.this, "name changed",
+                            Toast.LENGTH_SHORT).show();
+                } else if (propertyId == BR.phone) {
+                    Toast.makeText(MainActivity.this, "phone changed",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         fieldContact = new ObservableFieldContact("me", "15764225790");
         stringMap = new ObservableArrayMap<>();
         stringMap.put("string1", "第一string");
@@ -72,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
     public void recyclerViewBind(View view) {
         RecyclerViewActivity.launch(this);
     }
+
     public void attributeSetter(View view) {
         AttributeSetterActivity.launch(this);
     }
+
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DataBindDemo</string>
+    <string name="age">年龄：</string>
 </resources>

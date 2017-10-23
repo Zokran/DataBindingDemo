@@ -26,5 +26,18 @@
             android:onClick="@{()->clickHandler.onClickFriend(item.lastName)}"
             android:text="@{item.lastName+item.firstName}"
             android:textAllCaps="false"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="@{@string/age+item.age}"
+            android:textAllCaps="false"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorPrimary"/>
+
     </LinearLayout>
 </layout>

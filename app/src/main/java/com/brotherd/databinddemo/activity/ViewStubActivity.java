@@ -11,10 +11,12 @@ import android.view.ViewStub;
 import com.brotherd.databinddemo.R;
 import com.brotherd.databinddemo.databinding.ActivityViewStubBinding;
 import com.brotherd.databinddemo.databinding.IncludeStubBinding;
+import com.brotherd.databinddemo.model.User;
 
 public class ViewStubActivity extends AppCompatActivity {
 
     private ActivityViewStubBinding binding;
+    private User user;
 
     public static void launch(Context context) {
         Intent starter = new Intent(context, ViewStubActivity.class);
@@ -29,8 +31,10 @@ public class ViewStubActivity extends AppCompatActivity {
             @Override
             public void onInflate(ViewStub stub, View inflated) {
                 IncludeStubBinding binding = DataBindingUtil.bind(inflated);
+                binding.setUser(user);
             }
         });
+        user=new User("MingWei","Du",32);
     }
 
     public void inflate(View view) {
