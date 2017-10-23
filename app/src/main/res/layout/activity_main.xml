@@ -3,21 +3,161 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:id="@+id/llMain"
+    <!--自定义绑定文件名-->
+    <data class="ActMainBind">
+
+        <import type="java.util.List"/>
+
+        <import
+            alias="StringUtil"
+            type="com.brotherd.databinddemo.util.MyStringUtils"/>
+
+        <import type="android.view.View"/>
+
+        <import type="com.brotherd.databinddemo.model.User"/>
+
+        <import type="android.databinding.ObservableMap"/>
+
+        <variable
+            name="user"
+            type="User"/>
+
+        <variable
+            name="handler"
+            type="com.brotherd.databinddemo.handler.EventHandler"/>
+
+        <variable
+            name="userList"
+            type="List&lt;User>"/>
+
+        <variable
+            name="content"
+            type="String"/>
+
+        <variable
+            name="num"
+            type="int"/>
+
+        <variable
+            name="contact"
+            type="com.brotherd.databinddemo.ObservableContact"/>
+
+        <variable
+            name="contact_field"
+            type="com.brotherd.databinddemo.ObservableFieldContact"/>
+
+        <variable
+            name="stringMap"
+            type="ObservableMap&lt;String,String>"/>
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textHello"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <com.brotherd.databinddemo.widget.BlogListItem
+        <LinearLayout
+            android:id="@+id/llMain"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{user.firstName+user.lastName,default=dumingwei}"/>
+
+            <TextView
+                android:id="@+id/textUserList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{userList[1].toString()}"/>
+
+            <TextView
+                android:id="@+id/text_util"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.capitalize(userList[0].toString())}"/>
+
+            <include
+                layout="@layout/include_layout"
+                app:user="@{user}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{contact.name}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{contact.phone}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{contact_field.name.get()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{contact_field.phone.get()}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{stringMap[`string1`]}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{stringMap[`string2`]}"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{()->handler.onClickFriend(content)}"
+                android:text="click"
+                android:visibility="@{textUtil.getVisibility()==View.GONE?View.GONE:View.VISIBLE}"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="changeContact"
+                android:text="change contact"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="changeContactField"
+                android:text="changeContactField"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="changeStringMap"
+                android:text="changeStringMap"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="viewStubBinding"
+                android:text="ViewStubBinding"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="recyclerViewBind"
+                android:text="RecyclerViewBind"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="attributeSetter"
+                android:text="AttributeSetterActivity"/>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </layout>
 
