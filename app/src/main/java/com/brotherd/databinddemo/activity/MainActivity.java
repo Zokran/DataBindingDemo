@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         userList.add(new User("user1", "user1", 1));
         userList.add(new User("user2", "user2", 2));
         binding.setUser(user);
-        //binding.setVariable(BR.user,user);
         binding.setContent("hello content");
         binding.setHandler(handler);
         binding.setUserList(userList);

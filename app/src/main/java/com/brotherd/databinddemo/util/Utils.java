@@ -16,6 +16,14 @@ public class Utils {
         Glide.with(view.getContext()).load(url).into(view);
     }
 
+    @BindingAdapter({"testImageUrl"})
+    public static void testLoadImage(ImageView view, String url, String backUrl) {
+        Glide.with(view.getContext())
+                .load(url)
+                .thumbnail(Glide.with(view.getContext()).load(backUrl))
+                .into(view);
+    }
+
     @BindingAdapter("android:paddingLeft")
     public static void setPaddingLeft(View view, int paddingLeft) {
         view.setPadding(paddingLeft, view.getPaddingTop(), view.getPaddingRight(), view.getPaddingBottom());
@@ -23,6 +31,6 @@ public class Utils {
 
     @BindingAdapter("android:tint")
     public static void setTint(ImageView view, int paddingLeft) {
-       //view.setImageTintList(new ColorStateList());
+        //view.setImageTintList(new ColorStateList());
     }
 }
