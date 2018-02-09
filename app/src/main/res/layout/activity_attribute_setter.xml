@@ -12,6 +12,22 @@
             name="url"
             type="String" />
 
+        <variable
+            name="twoWayBind"
+            type="android.databinding.ObservableField&lt;String>" />
+
+        <variable
+            name="beforeTextChanged"
+            type="android.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged" />
+
+        <variable
+            name="onTextChanged"
+            type="android.databinding.adapters.TextViewBindingAdapter.OnTextChanged" />
+
+        <variable
+            name="afterTextChanged"
+            type="android.databinding.adapters.TextViewBindingAdapter.AfterTextChanged" />
+
     </data>
 
     <LinearLayout
@@ -21,19 +37,32 @@
 
         <com.brotherd.databinddemo.widget.Card
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             app:object="@{user}" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             app:imageUrl="@{url}" />
 
         <ImageView
             android:id="@+id/img_click"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             app:imageUrl="@{url}" />
+
+        <EditText
+            android:id="@+id/et_two_way_bind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@={twoWayBind}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="testTwoWayBind"
+            android:text="输出EditText 的文字变化后，towWayBind的值" />
 
     </LinearLayout>
 </layout>
