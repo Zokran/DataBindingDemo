@@ -1,53 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:bind="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/tools">
 
     <!--自定义绑定文件名-->
     <data class="ActMainBind">
 
-        <import type="java.util.List"/>
+        <import type="java.util.List" />
 
         <import
             alias="StringUtil"
-            type="com.brotherd.databinddemo.util.MyStringUtils"/>
+            type="com.brotherd.databinddemo.util.MyStringUtils" />
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
-        <import type="com.brotherd.databinddemo.model.User"/>
+        <import type="com.brotherd.databinddemo.model.User" />
 
-        <import type="android.databinding.ObservableMap"/>
+        <import type="android.databinding.ObservableMap" />
 
         <variable
             name="user"
-            type="User"/>
+            type="User" />
 
         <variable
             name="handler"
-            type="com.brotherd.databinddemo.handler.EventHandler"/>
+            type="com.brotherd.databinddemo.handler.EventHandler" />
 
         <variable
             name="userList"
-            type="List&lt;User>"/>
+            type="List&lt;User>" />
 
         <variable
             name="content"
-            type="String"/>
+            type="String" />
 
         <variable
             name="num"
-            type="int"/>
+            type="int" />
 
         <variable
             name="contact"
-            type="com.brotherd.databinddemo.ObservableContact"/>
+            type="com.brotherd.databinddemo.ObservableContact" />
 
         <variable
             name="contact_field"
-            type="com.brotherd.databinddemo.ObservableFieldContact"/>
+            type="com.brotherd.databinddemo.ObservableFieldContact" />
 
         <variable
             name="stringMap"
-            type="ObservableMap&lt;String,String>"/>
+            type="ObservableMap&lt;String,String>" />
+
+        <variable
+            name="testNull"
+            type="String" />
     </data>
 
     <android.support.v4.widget.NestedScrollView
@@ -61,57 +65,69 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{testNull??" is null"}'
+                android:textAllCaps="false" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{StringUtil.loadString(context)}"
+                android:textAllCaps="false" />
+
+            <TextView
                 android:id="@+id/textName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{user.firstName+user.lastName,default=dumingwei}"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <TextView
                 android:id="@+id/textUserList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{userList[1].toString()}"/>
+                android:text="@{userList[1].toString()}" />
 
             <TextView
                 android:id="@+id/text_util"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{StringUtil.capitalize(userList[0].toString())}"/>
+                android:text="@{StringUtil.capitalize(userList[0].toString())}" />
 
             <include
                 layout="@layout/include_layout"
-                bind:user="@{user}"/>
+                bind:user="@{user}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{contact.name}"/>
+                android:text="@{contact.name}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{contact.phone}"/>
+                android:text="@{contact.phone}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{contact_field.name.get()}"/>
+                android:text="@{contact_field.name.get()}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{contact_field.phone.get()}"/>
+                android:text="@{contact_field.phone.get()}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{stringMap[`string1`]}"/>
+                android:text="@{stringMap[`string1`]}" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{stringMap[`string2`]}"/>
+                android:text="@{stringMap[`string2`]}" />
 
             <Button
                 android:layout_width="match_parent"
@@ -119,49 +135,63 @@
                 android:onClick="@{()->handler.onClickFriend(content)}"
                 android:text="click"
                 android:textAllCaps="false"
-                android:visibility="@{textUtil.getVisibility()==View.GONE?View.GONE:View.VISIBLE}"/>
+                android:visibility="@{textUtil.getVisibility()==View.GONE?View.GONE:View.VISIBLE}" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeContact"
                 android:text="change contact"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeContactField"
                 android:text="changeContactField"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="changeStringMap"
                 android:text="changeStringMap"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="viewStubBinding"
                 android:text="ViewStubBinding"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="recyclerViewBind"
                 android:text="RecyclerViewBind"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="attributeSetter"
                 android:text="AttributeSetterActivity"
-                android:textAllCaps="false"/>
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="useInFragment"
+                android:text="在fragment中使用"
+                android:textAllCaps="false" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="useInverseMethod"
+                android:text="InverseMethod"
+                android:textAllCaps="false" />
 
         </LinearLayout>
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -40,16 +41,23 @@
             android:layout_height="100dp"
             app:object="@{user}" />
 
+        <!--加载图片如何使用error和placeholder占位图-->
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            app:imageUrl="@{url}" />
+            app:error="@{@drawable/ic_launcher}"
+            app:placeholder="@{@drawable/ic_launcher}"
+            app:url="@{url}"
+            tools:src="@drawable/ic_launcher" />
 
         <ImageView
             android:id="@+id/img_click"
             android:layout_width="wrap_content"
             android:layout_height="100dp"
-            app:imageUrl="@{url}" />
+            android:layout_marginTop="16dp"
+            app:imageUrl="@{url}"
+            tools:src="@drawable/ic_launcher" />
 
         <EditText
             android:id="@+id/et_two_way_bind"
@@ -58,7 +66,7 @@
             android:gravity="center"
             android:text="@={twoWayBind}" />
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testTwoWayBind"

@@ -121,7 +121,7 @@ public void testTwoWayBind(View view) {
     }
 
 ```
-xml文件
+ xml文件
 ```
  <variable
             name="twoWayBind"
@@ -145,3 +145,27 @@ xml文件
 ```
 android:text="@={twoWayBind}" 
 ```
+4. @BindingConversion注解的使用
+
+布局文件
+```
+ <variable
+    name="time"
+    type="java.util.Date" />
+            
+ <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@{time}"
+      tools:text="使用convert" />
+      
+```
+java代码
+```
+ bindBinding.setTime(new Date());
+```
+`@BindingConversion` 标记的方法调用时机：
+Android中的每个xml中的属性其实都对应着相应的java方法的，
+如果在xml中设置的属性值的类型与对应的Java方法的参数类型不符，
+这时 dataBinding就会去寻找可以让属性值转换为正确类型的方法，
+而寻找的根据就是所有被@BindingConversion注解标记的方法

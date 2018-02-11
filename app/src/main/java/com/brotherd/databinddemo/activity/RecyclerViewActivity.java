@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ObservableArrayList;
-import android.databinding.ObservableList;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,9 +14,6 @@ import com.brotherd.databinddemo.R;
 import com.brotherd.databinddemo.adapter.RvAdapter;
 import com.brotherd.databinddemo.databinding.ActivityRecyclerViewBinding;
 import com.brotherd.databinddemo.model.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class RecyclerViewActivity extends AppCompatActivity {
 
@@ -44,7 +40,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
         }
         adapter = new RvAdapter(userList, this);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adapter);
+        binding.setAdapter(adapter);
     }
 
     public void addData(View view) {
@@ -55,4 +51,6 @@ public class RecyclerViewActivity extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
     }
+
+
 }

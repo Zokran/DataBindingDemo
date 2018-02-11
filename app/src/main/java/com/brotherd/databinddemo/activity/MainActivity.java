@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         fieldContact.phone.set("15764225744");
     }
 
+    //改变map后UI自动改变
     public void changeStringMap(View view) {
         stringMap.put("string1", "hello boy");
         stringMap.put("string2", "hello girl");
@@ -92,4 +93,11 @@ public class MainActivity extends AppCompatActivity {
         AttributeSetterActivity.launch(this);
     }
 
+    public void useInFragment(View view) {
+        FragActivity.launch(this);
+    }
+
+    public void useInverseMethod(View view) {
+        InverseMethodActivity.launch(this);
+    }
 }

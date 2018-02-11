@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.brotherd.databinddemo">
+    package="com.brotherd.databinddemo">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,17 +13,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ViewStubActivity">
-        </activity>
-        <activity android:name=".activity.RecyclerViewActivity">
-        </activity>
-        <activity android:name=".activity.AttributeSetterActivity">
-        </activity>
+        <activity android:name=".activity.ViewStubActivity" />
+        <activity android:name=".activity.RecyclerViewActivity" />
+        <activity android:name=".activity.AttributeSetterActivity" />
+        <activity android:name=".activity.FragActivity" />
+        <activity android:name=".activity.InverseMethodActivity"></activity>
     </application>
 
 </manifest>
