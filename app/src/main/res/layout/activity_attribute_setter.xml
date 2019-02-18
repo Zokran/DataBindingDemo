@@ -66,11 +66,12 @@
             android:gravity="center"
             android:text="@={twoWayBind}" />
 
-        <TextView
+        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="testTwoWayBind"
-            android:text="输出EditText 的文字变化后，towWayBind的值" />
+            android:text="输出EditText 的文字变化后，towWayBind的值"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 </layout>
